@@ -58,5 +58,37 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+function generateSingleTable(number) {
+  console.log(`Multiplication Table for ${number}:`);
+    for (let i = 1; i <= 12; i++) {
+        const result = number * i;
+        console.log(`${number}  x  ${i}  =  ${result}`);
+    }
+}
 
+function generateTablesUpToN(n) {
+  if (n <= 0) {
+    console.log("Error: N must be a positive integer.");
+    return;
+  }
 
+    for (let i = 1; i <= n; i++) {
+        generateSingleTable(i);
+        console.log("---");
+    }
+}
+
+function main() {
+    const readlineSync = require('readline-sync');
+    const choice = readlineSync.question('Choose an option (1 for single table, 2 for tables up to N): ');
+    if (choice === '1') {
+        const number = readlineSync.questionInt('Enter a number: ');
+        generateSingleTable(number);
+    } else if (choice === '2') {
+        const n = readlineSync.questionInt('Enter N: ');
+        generateTablesUpToN(n);
+    } else {
+        console.log("Invalid choice.");
+    }
+}
+main();
